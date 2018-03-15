@@ -1,7 +1,7 @@
 # Udacity Robotics Project 4 - Follow Me
 
 In this project, I will train a deep neural network to identify and track a target in simulation. So-called “follow me” applications like this are key to many fields of robotics and the very same techniques you apply here could be extended to scenarios like advanced cruise control in autonomous vehicles or human-robot collaboration in industry.
-[image_0]: ./misc/simulator.png  
+[image0]:  ./misc/simulator.png
 [image_1]: ./misc/points.png  
 [image_2]: ./misc/people.png  
 [image_3]: ./misc/model1_IOU.png  
@@ -18,7 +18,7 @@ In this project, I will train a deep neural network to identify and track a targ
 
 ## Simulator
 The Quad-Copter Simulator as below, and you can download it [here](https://github.com/udacity/RoboND-DeepLearning-Project/releases/tag/v1.2.2):
-![alt text][image_0]   
+![alt text][image0]   
 ![alt text][image_1]  
 ![alt text][image_2]  
 Datas which are used for FCN to train the model can get from the "DL Training" mode in the Simulator.
