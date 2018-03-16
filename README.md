@@ -107,7 +107,8 @@ def decoder_block(small_ip_layer, large_ip_layer, filters):
 
 ## My Model Architecture
 I use keras.utils.vis_utils.plot_model to plot the model as png image.
-* model 1 
+* model 1
+
 ![alt text][image_14]
 <pre>
 <code>
@@ -121,7 +122,9 @@ decoder_out = decoder_block(decoder1, input, filters=filter_begin)
 </pre>
 
 * model 2
+
 ![alt text][image_15]
+
  - 64 filters started config: 
 
 <pre>
@@ -138,6 +141,7 @@ decoder_out = decoder_block(decoder2, inputs, filters=filter_begin)
 </pre> 
 
  - 96 filters started config:
+ 
 <pre>
 <code>
 filter_begin = 96  
@@ -152,8 +156,10 @@ decoder_out = decoder_block(decoder2, inputs, filters=filter_begin)
 </pre>
 
 * model 3
+
 ![alt text][image_16]
-  - 32 filters started config:
+
+ - 32 filters started config:
 <pre>
 <code>
 filter_begin = 32
@@ -172,6 +178,7 @@ decoder_out = decoder_block(decoder4, inputs, filters=filter_begin)
 </pre> 
   
  - 96 filters started config:
+ 
 <pre>
 <code>
 filter_begin = 96
