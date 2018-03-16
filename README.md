@@ -39,36 +39,41 @@ Datas which are used for FCN to train the model can get from the "DL Training" m
 * Separable Convolutions: Focus on the encoder-decoder architecture. I use [Separable Convolutions](https://arxiv.org/pdf/1610.02357.pdf) instead of traditional conv2d+maxpool layers, it's useful to reduce parameters and running time. With help of some codes in \utils I can easily define the encoder and decoder layers with Keras as below:
 
  - *Separable Convolution Layer with Batch Normalization*
+<pre>
 <code>
 def separable_conv2d_batchnorm(input_layer, filters, strides=1):
 &ensp;&ensp;&ensp;&ensp;output_layer_1 = SeparableConv2DKeras(filters=filters,kernel_size=3, strides=strides,padding='same', activation='relu')(input_layer)   
 &ensp;&ensp;&ensp;&ensp;output_layer = layers.BatchNormalization()(output_layer_1) 
 &ensp;&ensp;&ensp;&ensp;return output_layer
 </code>
-<br>
+</pre>
  - *Normal Convolution Layer with Batch Normalization*
+<pre>
 <code>
 def conv2d_batchnorm(input_layer, filters, kernel_size=3, strides=1):
 &ensp;&ensp;&ensp;&ensp;output_layer = layers.Conv2D(filters=filters, kernel_size=kernel_size, strides=strides, padding='same', activation='relu')(input_layer)
 &ensp;&ensp;&ensp;&ensp;output_layer = layers.BatchNormalization()(output_layer) 
 &ensp;&ensp;&ensp;&ensp;return output_layer
 </code>
-<br>
+</pre>
  - *Bilinear Upsampling*
+<pre>
 <code>
 def bilinear_upsample(input_layer):
 &ensp;&ensp;&ensp;&ensp;output_layer = BilinearUpSampling2D((2,2))(input_layer)
 &ensp;&ensp;&ensp;&ensp;return output_layer
 </code> 
-<br>
+</pre>
  - *Encoder Layer*
+<pre>
 <code>
 def encoder_block(input_layer, filters, strides):
 &ensp;&ensp;&ensp;&ensp;output_layer = separable_conv2d_batchnorm(input_layer, filters, strides)
 &ensp;&ensp;&ensp;&ensp;return output_layer
 </code> 
-<br>
+</pre>
  - *Decoder Layer*
+<pre>
 <code>
 def decoder_block(small_ip_layer, large_ip_layer, filters):
 &ensp;&ensp;&ensp;&ensp;output_upsample = bilinear_upsample(small_ip_layer)
@@ -77,7 +82,7 @@ def decoder_block(small_ip_layer, large_ip_layer, filters):
 &ensp;&ensp;&ensp;&ensp;output_layer =  separable_conv2d_batchnorm(output_layer, filters, strides=1)
 &ensp;&ensp;&ensp;&ensp;return output_layer
 </code>
-<br>
+</pre>
 * Batch Normalization: [Batch Normalization](https://arxiv.org/pdf/1502.03167.pdf) is a important technology to get high validation accuracy. By using the mean and variance of the values in the current mini-batch I can get good inputs. Also do this to every layers(mean normalize the inputs to every layers) is the best way for trainning process. 
 * Bilinear Upsampling: Here Bilinear Upsampling is a resampling technique which served for transpose convolutions(de-convolution). Do Bilinear Upsampling with small layer will make them to be the original size. But there are also some informations will be lost unless use skip connections(layers.concatenate) to retain information from previous laysers.
 
