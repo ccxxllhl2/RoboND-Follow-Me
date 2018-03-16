@@ -1,7 +1,6 @@
 # Udacity Robotics Project 4 - Follow Me
 
 In this project, I will train a deep neural network to identify and track a target in simulation. So-called “follow me” applications like this are key to many fields of robotics and the very same techniques you apply here could be extended to scenarios like advanced cruise control in autonomous vehicles or human-robot collaboration in industry.
-
 [image_0]: ./misc/simulator.png
 [image_1]: ./misc/points.png
 [image_2]: ./misc/people.png
@@ -16,6 +15,9 @@ In this project, I will train a deep neural network to identify and track a targ
 [image_11]: ./misc/model3_96_IOU.png
 [image_12]: ./misc/train_curve_model3_96.png
 [image_13]: ./misc/melt.png
+[image_14]: ./misc/model1.png
+[image_15]: ./misc/model2.png
+[image_16]: ./misc/model3.png
 
 
 ## Simulator
@@ -97,8 +99,10 @@ def decoder_block(small_ip_layer, large_ip_layer, filters):
 |IOU | 0.4247 | 0.5117 | 0.5888 | 0.5456 | 0.5630 
 |Score | 0.3149 | 0.3707 | 0.4390 | 0.3942 | 0.4265 
 
-* Model e.g.
- - model_1: 
+## My Model Architecture
+I use keras.utils.vis_utils.plot_model to plot the model as png image.
+* model 1 
+![alt text][image_14]
 <pre>
 <code>
 filter_begin = 96  
@@ -110,7 +114,10 @@ decoder_out = decoder_block(decoder1, input, filters=filter_begin)
 </code>
 </pre>
 
- - model_2_64: 
+* model 2
+![alt text][image_15]
+ - 64 filters started config: 
+
 <pre>
 <code>
 filter_begin = 64  
@@ -124,7 +131,7 @@ decoder_out = decoder_block(decoder2, inputs, filters=filter_begin)
 </code>
 </pre> 
 
- - model_2_96: 
+ - 96 filters started config:
 <pre>
 <code>
 filter_begin = 96  
@@ -138,7 +145,9 @@ decoder_out = decoder_block(decoder2, inputs, filters=filter_begin)
 </code>
 </pre>
 
- - model_3_32: 
+* model 3
+![alt text][image_16]
+  - 32 filters started config:
 <pre>
 <code>
 filter_begin = 32
@@ -156,7 +165,7 @@ decoder_out = decoder_block(decoder4, inputs, filters=filter_begin)
 </code>
 </pre> 
   
- - model_3_96:
+ - 96 filters started config:
 <pre>
 <code>
 filter_begin = 96
