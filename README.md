@@ -60,8 +60,8 @@ Datas which are used for FCN to train the model can get from the "DL Training" m
 |IOU | 0.4247 | 0.5117 | 0.5888 | 0.5456 | 0.5630 
 |Score | 0.3149 | 0.3707 | 0.4390 | 0.3942 | 0.4265 
 
-## My Model Architecture
-I use keras.utils.vis_utils.plot_model to plot the model as png image.
+## Model Architecture View
+
 * model 1
 ![alt text][image_14]
 
